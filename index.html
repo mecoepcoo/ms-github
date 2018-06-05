@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html, body {
+      min-height: 100%;
+      height: 100%;
+      background-color: #1271ab;
+      color: white;
+    }
+    body {
+      padding-top: 100px;
+      padding-left: 280px;
+      padding-right: 280px;
+    }
+    #smile {
+      font-size: 145px;
+    }
+    .mes {
+      font-size: 30px;
+    }
+    .small {
+      margin-top: 70px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div id="smile">:(</div>
+  <p class="mes">你的Github遇到问题，需要重新启动。</p>
+  <p class="mes">我们只收集某些错误信息，然后你可以重新启动。(完成 <span id="percent">0</span>%)</p>
+  <p class="mes small">如果你想了解更多信息，则可以稍后在百度搜索此错误：<span>Actually, I just don't know what to search for.</span></p>
+  <script>
+    window.onload = function () {
+      var percent = document.getElementById('percent');
+      var sum = 0;
+      var tick;
+      var timer = setInterval(counter, 200);
+
+      function counter() {
+        tick = Math.random();
+        sum += tick;
+        if (Math.floor(sum) === 80) {
+          clearInterval(timer);
+          setTimeout(function () {
+            timer = setInterval(counter, 200);
+          }, 5000);
+        }
+
+        percent.innerHTML = '' + Math.floor(sum);
+        if (sum > 100) {
+          clearInterval(timer);
+        }
+      }
+    }
+
+
+   
+  </script>
+</body>
+</html>
